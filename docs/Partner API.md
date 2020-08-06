@@ -36,7 +36,7 @@ Where to Go?
 * Become a developer on the Qredo network by [signing up for the Partner API](#sign-up-for-the-partner-api).
 * [Connect to the Partner API](#connect-to-the-partner-api) using an API key for use in your development environment.
 * Familiarise yourself with the API from these parts of the page: [API endpoints](#api-endpoints) and [quick-start guide](#quick-start-guide).
-* Refer to the [Reference Docs](https://api) to help you test and develop knowledge.
+* Refer to the [Reference Docs](/api) to help you test and develop knowledge.
 * [Set up the Live](#set-up-live) environment once ready to Go-Live.
 
 Using the Qredo Apps
@@ -204,7 +204,7 @@ You repeat the above step to create ACME CORP as a company.
 
 Using the `company_id` of John Doe Group, you add ACME Corp as a trusted party. For the trusted party of `type` that is `company`, you specify the web address.
 
-Using the `company_id` of ACME Corp, you add a user as a trusted party for that company, and state the email address. In this example, you add Izumi Katsuyoshi with the email address of IKatsuyoshi@gmail.com.
+Using the `company_id` of ACME Corp, you add a user as a trusted party for that company, and state the email address. In this example, you add the email address of Izumi Katsuyoshi [IKatsuyoshi@gmail.com].
 
 The response returned from the request indicates that the message is successful.
 
@@ -373,8 +373,8 @@ https://api.qredo.network/company/1f4sRjsZD612GdSvokktFReylZp/fund/1f5xeLmyhXrEJ
 Set Up Live
 -----------
 
-"For setting up the Partner API on your Live environment, you need to generate a private/public keypair. This allows every API request to be 
-signed with your private key and verified by Qredo with a public key you upload to the platform."
+For setting up the Partner API on your Live environment, you need to generate a private and public key combination. This allows every request in the API to be 
+signed with a public and private key combination. The commands are as follows:
 
 ### Generate Key Pair
 
@@ -397,8 +397,8 @@ The signature is applicable to these areas:
 * the nonce (or number) that is generated for cryptographic purposes.
 * the payload (body) for POST/PUT requests that contain added data.
 
-"To formulate the signature, these three components should be concatenated in that order without any kind of delimiters, signed with the private key
-and the result encoded in base64 url safe encoding (RFC 4648)."
+To formulate the signature, these three components should be concatenated in that order without any kind of delimiters, signed with the private key
+and the result encoded in base64 url safe encoding (RFC 4648).
 
 The following http headers are added to each request:
 
@@ -407,4 +407,4 @@ The following http headers are added to each request:
 
 The signature is in the base64 url safe encoding format (RFC 4648).
 
-When you intend to go live, please get in touch with Qredo who can assist you in adding the private key (support@qredo.com).
+When you intend to go live, please get in touch with Qredo (support@qredo.com) to assist you in adding the public key to the Qredo service.
