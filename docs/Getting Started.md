@@ -2,7 +2,7 @@
 id: Getting Started
 ---
 
-You start the process of registering with Qredo from the Qredo Wallet app.  A lobby page shows an introductory video on Qredo and links to FAQs. At the end of the journey, you will be ready to start your activities on the Qredo Network using the Qredo Web app and the Qredo Signing apps.
+You start the process of registering with Qredo from the Qredo website.  A lobby page shows an introductory video on Qredo and links to FAQs. At the end of the journey, you will be ready to start your activities on the Qredo Network using the Qredo Web app and the Qredo Signing apps.
 
 ![Page1](/doc-images/page1.png)
 
@@ -11,12 +11,12 @@ There are 3 sets of steps as follows:
 2. [Signing app steps](#signing-app-steps)
 3. [Login steps](#login-steps)
 
-The [Navigation](#navigation) section shows you the main sections of the Qredo Wallet app for launching your tasks.
+The [Navigation](#navigation) section shows you the main sections of the Qredo Wallet App for launching your tasks.
 
 Wallet App Steps
 -------------
 
-The Qredo Wallet app steps include steps for registration.
+The Qredo Wallet App steps include steps for registration.
 
 ### Start Registration
 
@@ -79,13 +79,13 @@ You can download the full terms and conditions if you need to distribute and pri
 
 You would have received an email from Qredo containing an evaluation code.
 
-Type in the code in **Email address validation code**. The page for downloading the Qredo Signing app shows.
+Type in the code in **Email address validation code**. The page for downloading the Qredo Signing App shows.
 
 ### Download Phone App
 
 ![download](/doc-images/dload.png)
 
-An SMS is sent to your phone that contains a link to the Qredo Signing app on the app store. The SMS should arrive promptly.
+An SMS is sent to your phone that contains a link to the Qredo Signing App on the app store. The SMS should arrive promptly.
 
 When you have downloaded the mobile app, a splash screen of the app appears as follows:
 
@@ -104,13 +104,13 @@ For more information, see [Pairing Steps](#pairing-steps).
 
 ### Create Master Seed
 
-Once you have paired your phone with the Qredo Wallet app, you are prompted to create your master seed. The master seed is an important security feature that bonds your Qredo identify to your phone.
+Once you have paired your phone with the Qredo Wallet App, you are prompted to create your master seed. The master seed is an important security feature that bonds your Qredo identify to your phone.
 
 For more details, see [Master Seed Steps](#master-seed-steps).
 
 ### Sign In
 
-Once you have set up the Qredo Signing app with the master seed, you can sign in for the first time.
+Once you have set up the Qredo Signing App with the master seed, you can sign in for the first time.
 
 For more details, see [Sign In Steps](#sign-in)
 
@@ -120,7 +120,7 @@ Signing App Steps
 The signing app steps include pairing and master seed steps.
 
 ### Pairing Steps
-Once you have downloaded the Qredo Signing app, you are ready to pair your phone with the Qredo Wallet app. You will see a landing page for the mobile app on your phone.
+Once you have downloaded the Qredo Signing App, you are ready to pair your phone with the Qredo Wallet App. You will see a landing page for the mobile app on your phone.
 
 You scan a QR-code on the web app through your phone’s camera, which pairs the phone with the mobile app. The pairing process ensures that only your phone can be used together with the web app. The unique QR-code that shows on the web app can only be used once.
 
@@ -196,7 +196,7 @@ When all entries are correct, the screen shows as follows:
 
 ### Completion
 
-Once set up, tap **Confirm** and then **Continue**. A screen appears to show that you have reached the end of the setup process for the Qredo Signing app.
+Once set up, tap **Confirm** and then **Continue**. A screen appears to show that you have reached the end of the setup process for the Qredo Signing App.
 
 You are now ready to sign in for the first time.
 
@@ -213,7 +213,7 @@ Login Steps
 3.  To ensure that you do not need to enter your details again the next time you open the web app, observe **Remember Me**.   
 4.  Tap **Sign In**.
 
-Once you have signed in to the Qredo Wallet app, you are requested by Qredo to authenticate yourself which automatically signs you in to the Qredo Signing app. A message appears.
+Once you have signed in to the Qredo Wallet App, you are requested by Qredo to authenticate yourself which automatically signs you in to the Qredo Signing App. A message appears.
 
 ![signin](/doc-images/1signinconf.png)
 

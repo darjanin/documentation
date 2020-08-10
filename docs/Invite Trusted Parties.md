@@ -3,7 +3,7 @@ id: Invite Trusted Parties
 ---
 As the account owner, you can invite users as trusted parties, allowing you to build your Qredo Network. A trusted party can send and receive money, and/or approve and reject as a nominated custodian.
 
-Summmary of Steps
+Summary of Steps
 -----------------
 
 - When sending invites to trusted parties, you can:
@@ -20,7 +20,7 @@ Invite from Qredo
 
 You enter an email address for a user on the Qredo Network. The email address must match that held in the database for an existing user to be added. If the email address does not match, you will need to find out their correct email address and enter it again.
 
-1. From any of the Qredo Wallet app screens, click the **Trusted Network** icon:
+1. From any of the Qredo Wallet App screens, click the **Trusted Network** icon:
 
    ![Trusted Network Button](/doc-images/button-trustednetwork.png)
 
@@ -54,7 +54,7 @@ In the Add Trusted Party screen, the URL of the Join page appears. This allows a
 Accept an Invite
 ----------------
 
-As a user on the Qredo Network, you would have received an invite on your Qredo Signing app to become part of another user's network. Accepting an invite pairs your contact details with the Qredo user that invited you. Pairing lets you access the contact details of the user that has invited you, and vice-versa.
+As a user on the Qredo Network, you would have received an invite on your Qredo Signing App to become part of another user's network. Accepting an invite pairs your contact details with the Qredo user that invited you. Pairing lets you access the contact details of the user that has invited you, and vice-versa.
 
 1. Tap on the notification for the invite.
 2. Sign in to the app using the biometric feature of your phone.
@@ -91,7 +91,7 @@ Monitor Responses
 
 In the Approvals view, you can monitor responses to your invites. The Approvals view shows trusted parties that have approved and/or rejected invites.
 
-1. Click the the Approval icon to access the Approvals view.
+1. Click the Approval icon to access the Approvals view.
 
    ![Button Approve](/doc-images/button-approve.png)  
 
