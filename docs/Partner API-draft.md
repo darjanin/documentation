@@ -9,13 +9,11 @@ Qredo’s Partner API enables authorized Qredo Partners to operate the Qredo Pla
 
 The features of the Qredo Platform are summarised as follows:
 
-*   Cross-chain decentralised custody of digital assets
-*   Trade credit network
-*   Institutional-grade DeFi platform   
-*   No wallet prefunding 
-*   MPC secured fund management    
+*   Institutional-grade DeFi platform    
+*   Secure your customer’s digital assets    
+*   Offers MPC secured fund management    
 *   Hardware security hardened network    
-*   Multi-custodian signatures    
+*   Multi-custodian signature capable    
 *   Instantiate flexible governance policies    
 *   Near instant digital asset delivery    
 *   Eliminate counterparty risk
@@ -62,14 +60,14 @@ Sign Up for the Partner API
 3. Read through the descriptions on the API and click **Apply**.
 4. Fill out the form to apply for the Partner API and click **Submit.**
 
-After a confirmation message appears with the **Generate Key** button for connecting to the API.
+Both the Production and Sandbox API form are enabled.
 
 ![partnerapi](/doc-images/generatekeyimage1.png)
 
-Connect to the Partner API
---------------------------
+Add Keys to the Environments
+----------------------------
 
-The Partner API key is a security feature which ensures that only you can access the Partner API endpoints. You generate an API key that you use for both testing the API and going Live.
+Keys are a security feature which ensures that only you can connect to the endpoints in the relevant environments. the Sandbox environment for testing and the Production environment for running it Live. 
 
 :::note
 
@@ -77,13 +75,60 @@ The Partner API key is a security feature which ensures that only you can access
 *   You must not add any of the API keys to parts of a program where it is not required, e.g., embedded directly in to the code of a program.
 :::
 
-### Generate an API Key
+### API Key
+The API key is an alphanumeric ID that is used for authentication and is added to the header section of the web page. 
 
-1. Click **Generate Key**. In the New Partner API Key screen, the Key ID and Partner API Key show.
+### Private and Public Key Combination
+
+You also need to generate an RSA public key and private key pair. This allows every request in the API to be
+signed with a private key in order to generate a signature. The public and private key provides an extra level of security over the API key. 
+
+#### About the Signature
+
+The signature is applicable to these areas:
+
+* the URL of the full path.
+* the nonce (or number) that is generated for cryptographic purposes.
+* the payload (body) for POST/PUT requests that contain added data.
+
+To formulate the signature, these three components should be concatenated in that order without any kind of delimiters, signed with the private key
+and the result encoded in base64 url safe encoding (RFC 4648).
+
+The following http headers are added to each request:
+
+'x-sign:' the signature itself
+'x-nonce:' the nonce used in the signature
+
+The signature is in the base64 url safe encoding format (RFC 4648).
+
+### Sandbox Keys
+
+1. In the Sandbox section, click **Generate Key**. In the New Partner API Key screen, the Key ID and Partner API Key show.
 
 ![partnerapi](/doc-images/apikeypartner.png)
 
 2. Click **Copy.**
+
+3. Click Generate.
+
+4. Enter the Public Key in the Public Key field. See generate public key.
+
+5. Click Generate.
+
+
+### Production Keys
+
+1. In the Production section, click **Generate Key**. In the New Partner API Key screen, the Key ID and Partner API Key show.
+
+![partnerapi](/doc-images/apikeypartner.png)
+
+2. Click **Copy.**
+
+3. Click Generate.
+
+4. Enter the Public Key in the Public Key field. See generate public key.
+
+5. Click Generate.
 
 :::note
 If you have lost your API key, you can return to the Settings page to generate a new key.
@@ -91,6 +136,25 @@ If you have lost your API key, you can return to the Settings page to generate a
 1.  Click **Regenerate** Key.
 2.  Click **Copy** in the New Partner API Key screen.
 :::
+
+#### Generate Key Pair
+
+1. Generate the key pair by entering this command in openssl.
+
+``openssl genrsa -out private.pem 2048``
+
+2. Extract the public key from the key pair.
+
+``openssl rsa -in private.pem -outform PEM -pubout -out public.pem``
+
+:::info
+private.pem is the private key and public.pem is the public key
+:::
+
+### Send Keys to Qredo
+
+When you have generated the keys, please send the public and private keys via email to Qredo (support@qredo.com) for adding to your environments.
+
 
 ### Add Key to your Development Environment
 
@@ -102,6 +166,8 @@ The following is an example request header in cURL format. You add the API key v
 curl -X GET "https://yourcompany.net/api/v1/p/company/1f4s2r1NG4E1gZmoeXQBJo9MAww" -H "accept: application/json" -H "X-API-KEY: eyJrZXlfaWQiOiJBek13cFhDNFVoQWhwUSIsImtleSI6Im9GX0ZKUGthT25FdTd1VEU0czR1VDBrd3hqajgxUWJkRDhaOE9vXzhZdlUifQ"
 ```
 
+What does the signature and nonce look like?
+
 API Endpoints
 -------------
 
@@ -109,12 +175,13 @@ Once connected to the Partner API, you have access to all the endpoints.
 
 | **Endpoint** | **Description** |
 | --- | --- |
-| Company | A Company is an entity on the Qredo Network that is a customer account which you create on the customer's behalf. A company includes all entities for managing the Qredo network including Trusted Parties, holdings, funds, custody policies, and those for the movement of money (deposits, transfers, and withdrawals). You create any number of companies, update each company, and search companies by entering part of the company name.  A company can also be a Trusted Party to another company. |
-| Trusted Network | A Trusted Network is needed in order to use the Qredo Network, including for the creation of funds and for the movement of assets. A Trusted Network lets you add other Trusted Parties. These can include other companies, e.g., exchanges for an institution. Users can also be Trusted Parties, e.g., those for the companies you created as Trusted Parties. You can also find various Trusted Parties, and delete a Trusted Party. Note that you cannot delete a Trusted Party if it has been assigned to a fund.|
-| Holding | This is information on all the assets for a company on the Qredo network. Each holding is divided according to the asset type. Each holding entry also includes the balance for that asset, allowing you to track funds coming in and out.|
-| Fund | A fund is a wallet that contains assets, addresses, and custody policies. You can create a small or large number of funds depending on your requirements. For each fund, you specify the asset and the custody policies. Custody policies for deposits and withdrawals must exist for both a fund with multiple custodians, or for a single user that self-manages custody. You can also find information on the fund and the deposit addresses. For an individual fund, you can add withdrawal addresses.|
-| Transfer | Transfers let you move money to another Trusted Party on the Qredo network. You can add a new transfer and find out the transfer status. |
+| Company | A Company is an entity on the Qredo Network. Within a company is the holding that contains one or more funds. You create one or more companies, update each company, and search companies by entering part of the company name.  A company can also be a trusted party to another company. |
+| Trusted Network | A Trusted Network lets you add other Trusted Parties. These can include other companies, e.g., exchanges for an institution. Users can also be Trusted Parties, e.g., those for the companies you created as Trusted Parties. You can also find various Trusted Parties (company and users), and delete a trusted party. |
+| Holding | This is information on all the assets for a company on the Qredo network. |
+| Fund | A fund contains assets and custody policies. You can find information on the fund and the deposit address. For an individual fund, you can add withdrawal addresses. |
+| Transfer | Transfers let you move money to another trusted party on the Qredo network. You can add a new transfer and find out the transfer status. |
 | Withdrawal | Withdrawals let you send money to a different cryptocurrency address. Once money is withdrawn, it is off the Qredo blockchain and the custody rules no longer apply. You can add a new withdrawal address, and find out the withdrawal status. |
+
 
 ### Endpoint Methods
 
@@ -148,7 +215,7 @@ This quick-start guide shows you how to build your Qredo network programmaticall
 
 ### Create Company
 
-You can create a company by adding basic information in a POST request. The request returns the reference (`ref`) and the `company_id`. The 'company_id' is important as it uniquely identifies the company on the Qredo Network. Each request lets you create one company.
+You can create a company by adding basic information in a POST request. The request returns the reference (`ref`) and `company_id`. Each request lets you create one company.
 
 You repeat the process to create multiple companies as Trusted Parties, which form part of your Trusted Network on Qredo.
 
@@ -203,13 +270,13 @@ You repeat the above step to create ACME CORP as a company.
 
 ### Add Trusted Party
 
-Using the `company_id` of John Doe Group, you add ACME Corp as a Trusted Party. For the Trusted Party of `type` that is `company`, you specify the web address.
+Using the `company_id` of John Doe Group, you add ACME Corp as a trusted party. For the trusted party of `type` that is `company`, you specify the web address.
 
-Using the `company_id` of ACME Corp, you add a user as a Trusted Party for that company, and state the email address. In this example, you add the email address of Izumi Katsuyoshi [IKatsuyoshi@gmail.com].
+Using the `company_id` of ACME Corp, you add a user as a trusted party for that company, and state the email address. In this example, you add the email address of Izumi Katsuyoshi [IKatsuyoshi@gmail.com].
 
 The response returned from the request indicates that the message is successful.
 
-A Trusted Party that is a user must have been added to the Qredo Network through the Qredo Desktop app. When adding the Trusted Party using the below request, they receive an approval request on the Qredo Signing app. Once approved, you will be able to find the Trusted Party when running a Returns All Trusted Parties for a company request.
+A trusted party that is a user must have been added to the Qredo Network through the Qredo Desktop app. When adding the trusted party using the below request, they receive an approval request on the Qredo Signing app. Once approved, you will be able to find the trusted party when running a Returns All trusted parties for a company request.
 
 You first enter **9827feec-4eae-4e80-bda3-daa7c3b97ad1** in the URL for John Doe Group and the following request:
 
@@ -248,9 +315,9 @@ You then enter **1fB50nbY9Tw2TT12K6VH46gDKWE** for ACME Corp in the URL and the 
 
 ### Return all trusted parties for a company
 
-This endpoint shows details of the Trusted Parties that exist in a company. You should also use the endpoint to find out the `trusted_entity_id` of a Trusted Party user that you want to include as a member of a custody group for creating a fund.  
+This endpoint shows details of the Trusted Parties that exist in a company. You should also use the endpoint to find out the `trusted_entity_id` of a trusted party user that you want to include as a member of a custody group for creating a fund.  
 
-In this example. you obtain the Trusted Party user of Izumi Katsuyoshi that you added in Add trusted party.
+In this example. you obtain the trusted party user of Izumi Katsuyoshi that you added in Add trusted party.
 
 You enter **1fB50nbY9Tw2TT12K6VH46gDKWE** in the URL and the following request:
 
@@ -282,7 +349,7 @@ https://api.qredo.network/company/1f4sDiEGYNGJiGli31MDgzkRj3F/trustedparty
 
 ### Add Fund
 
-A fund is the organisational unit for assigning portfolios. A company can have 1 or more funds. Each fund includes custody groups containing members. You select the members from the Trusted Party users that you previously added. Custody group members include Trusted Party users that are nominated as custodians, where their signatures are needed to approve transactions. These include:
+A fund is the organisational unit for assigning portfolios. A company can have 1 or more funds. Each fund includes custody groups containing members. You select the members from the trusted party users that you previously added. Custody group members trusted party users that are nominated as custodians, where their signatures are needed to approve transactions. These include:
 
 *   `custodygroup_withdraw` custody group for a withdrawal
 *   `custodygroup_tx` custody group for a transfer
@@ -295,7 +362,7 @@ A fund includes a `threshold` that determines how many custodian signatures from
 
 The response shows an assigned `fund_id` and IDs assigned to each custody group.
 
-This example includes the `custodygroup_withdraw` group with a `threshold` of 1 that contains 1 `member`. There is the `custodygroup_tx` group that also has a `threshold` of 1 with 1 `member`. This example fund contains `BTC-TESTNET`. As members need to be Trusted Party users, you add the 'trusted_entity_id' as a value in the '"members"' array.
+This example includes the `custodygroup_withdraw` group with a `threshold` of 1 that contains 1 `member`. There is the `custodygroup_tx` group that also has a `threshold` of 1 with 1 `member`. This example fund contains `BTC-TESTNET`. As members need to be trusted party users, you add the 'trusted_entity_id' as a value in the '"members"' array.
 
 The fund is added to the `company_id` of 1fB50nbY9Tw2TT12K6VH46gDKWE.
 
@@ -343,7 +410,7 @@ You enter **1fB50nbY9Tw2TT12K6VH46gDKWE** for ACME Corp in the URL and the follo
 
 You can obtain the deposit address associated with the fund, and find out both the balance and asset of the fund.
 
-You specify the `company_id` for the Trusted Party and the `fund_id`.
+You specify the `company_id` for the trusted party and the `fund_id`.
 
 1. Enter **1fB50nbY9Tw2TT12K6VH46gDKWE** in the URL for the `company_id` of ACME corp.
 
@@ -374,22 +441,8 @@ https://api.qredo.network/company/1f4sRjsZD612GdSvokktFReylZp/fund/1f5xeLmyhXrEJ
 Set Up Live
 -----------
 
-For setting up the Partner API on your Live environment, you need to generate a private and public key combination. This allows every request in the API to be
-signed with a public and private key combination. The commands are as follows:
+For setting up the Partner API on your Live environment, 
 
-### Generate Key Pair
-
-1. Generate the key pair by entering this command in openssl.
-
-``openssl genrsa -out private.pem 2048``
-
-2. Extract the public key from the key pair.
-
-``openssl rsa -in private.pem -outform PEM -pubout -out public.pem``
-
-:::info
-private.pem is the private key and public.pem is the public key
-:::
 
 ### About the Signature
 The signature is applicable to these areas:
@@ -408,4 +461,4 @@ The following http headers are added to each request:
 
 The signature is in the base64 url safe encoding format (RFC 4648).
 
-When you intend to go live, please get in touch with Qredo (support@qredo.com) to assist you in adding the public key to the Qredo service.
+
