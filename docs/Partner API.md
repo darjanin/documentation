@@ -109,7 +109,7 @@ Once connected to the Partner API, you have access to all the endpoints.
 
 | **Endpoint** | **Description** |
 | --- | --- |
-| Company | A Company is an entity on the Qredo Network that is a customer account which you create on the customer's behalf. A company includes all entities for managing the Qredo network including Trusted Parties, holdings, funds, custody policies, and those for the movement of money (deposits, transfers, and withdrawals). You create any number of companies, update each company, and search companies by entering part of the company name.  A company can also be a Trusted Party to another company. |
+| Company | A Company is an entity on the Qredo Network that is a customer account which you create on the customer's behalf. A company includes all entities for managing the Qredo network including Trusted Parties, holdings, funds, custody policies, and those for the movement of money (deposits, transfers, and withdrawals). You create any number of companies, update each company, and search companies by entering part of the company name.  A company can also be a Trusted Party to another company. Note that for all requests except CreateCompany, you include the `company_id` to ensure that all data can be manipulated for that company. |
 | Trusted Network | A Trusted Network is needed in order to use the Qredo Network, including for the creation of funds and for the movement of assets. A Trusted Network lets you add other Trusted Parties. These can include other companies, e.g., exchanges for an institution. Users can also be Trusted Parties, e.g., those for the companies you created as Trusted Parties. You can also find various Trusted Parties, and delete a Trusted Party. Note that you cannot delete a Trusted Party if it has been assigned to a fund.|
 | Holding | This is information on all the assets for a company on the Qredo network. Each holding is divided according to the asset type. Each holding entry also includes the balance for that asset, allowing you to track funds coming in and out.|
 | Fund | A fund is a wallet that contains assets, addresses, and custody policies. You can create a small or large number of funds depending on your requirements. For each fund, you specify the asset and the custody policies. Custody policies for deposits and withdrawals must exist for both a fund with multiple custodians, or for a single user that self-manages custody. You can also find information on the fund and the deposit addresses. For an individual fund, you can add withdrawal addresses.|
@@ -282,7 +282,7 @@ https://api.qredo.network/company/1f4sDiEGYNGJiGli31MDgzkRj3F/trustedparty
 
 ### Add Fund
 
-A fund is the organisational unit for assigning portfolios. A company can have 1 or more funds. Each fund includes custody groups containing members. You select the members from the Trusted Party users that you previously added. Custody group members include Trusted Party users that are nominated as custodians, where their signatures are needed to approve transactions. These include:
+When adding a fund, you select the members from the Trusted Party users that you previously added. Custody group members include Trusted Party users that are nominated as custodians, where their signatures are needed to approve transactions. These include:
 
 *   `custodygroup_withdraw` custody group for a withdrawal
 *   `custodygroup_tx` custody group for a transfer
@@ -341,7 +341,7 @@ You enter **1fB50nbY9Tw2TT12K6VH46gDKWE** for ACME Corp in the URL and the follo
 
 ### Get Deposit Address
 
-You can obtain the deposit address associated with the fund, and find out both the balance and asset of the fund.
+You can obtain the deposit addresses associated with the fund, and find out both the balance and asset of the fund.
 
 You specify the `company_id` for the Trusted Party and the `fund_id`.
 
@@ -379,6 +379,8 @@ signed with a public and private key combination. The commands are as follows:
 
 ### Generate Key Pair
 
+You use openssl on your system to generate a key pair. If your system doesn't have openssl, you will need to first download it from a suitable location.
+
 1. Generate the key pair by entering this command in openssl.
 
 ``openssl genrsa -out private.pem 2048``
@@ -388,14 +390,16 @@ signed with a public and private key combination. The commands are as follows:
 ``openssl rsa -in private.pem -outform PEM -pubout -out public.pem``
 
 :::info
-private.pem is the private key and public.pem is the public key
+* private.pem is the private key and public.pem is the public key.
+* The type of key pair you create is RSA.
+* 2048 is the recommended size in bits of the RSA private key. If desired, you can choose a larger size, e.g., 4096.
 :::
 
 ### About the Signature
 The signature is applicable to these areas:
 
 * the URL of the full path.
-* the nonce (or number) that is generated for cryptographic purposes.
+* the nonce (or number) that is generated for cryptographic purposes. This number uniquely identifies each call to the API and increases by 1 with each call.
 * the payload (body) for POST/PUT requests that contain added data.
 
 To formulate the signature, these three components should be concatenated in that order without any kind of delimiters, signed with the private key
