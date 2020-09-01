@@ -5,7 +5,7 @@ id: Partner API
 About
 -----
 
-Qredo’s Partner API enables authorized Qredo Partners to operate the Qredo Platform programmatically from their application. OMS and EMS ISVs, Exchanges and other financial service providers can create accounts, initiate transactions on behalf of users, and approve transactions where they have been ordained as a Custodian over an end user's or corporate user’s fund.
+Qredo’s Partner API enables authorized Qredo Partners to operate the Qredo Platform programmatically from their application. OMS and EMS ISVs, Exchanges and other financial service providers can create accounts, initiate transactions on behalf of users, and approve transactions where they are ordained as a Custodian over an end user's or corporate user’s fund.
 
 The features of the Qredo Platform are summarised as follows:
 
@@ -36,9 +36,9 @@ Using the Qredo Apps
 
 The Partner API is used together with the Qredo Wallet App and the Qredo Signing App for functions around Trusted Parties and custodians. Users that are Trusted Parties can be ordained as Custodians, or be counterparties to a trade initiator in a transfer.
 
-Users that are added as Trusted Parties need to have been registered on Qredo via the Qredo Wallet App. For more details on registration, refer to the [Getting Started](/docs/Getting%20Started) page.
+When users are added as Trusted Parties, they are registered on Qredo via the Qredo Wallet App. For more details on registration, refer to the [Getting Started](/docs/Getting%20Started) page.
 
-The Partner API only permits custodian approvals from the Qredo Signing App on your phone. When users are added as Trusted Parties through the Partner API, they need to accept the invite through the Qredo Signing App. When ordained as custodians, they also need to approve transfer and withdrawal functions from the mobile app. This image shows how the phone app appears when a custodian approves a withdrawal transaction.
+The Partner API only permits custodian approvals from the Qredo Signing App on your phone. When added as Trusted Parties through the Partner API, they accept the invite through the Qredo Signing App. When ordained as custodians, they approve transfer and withdrawal functions from the mobile app. This image shows how the phone app appears when a custodian approves a withdrawal transaction.
 
 ![ledger](/doc-images/apprtransfer.png)
 
@@ -54,7 +54,7 @@ The following is a summary of steps for using the Partner API.
 
 While testing and using the API, learn about the [API endpoints](#api-endpoints), follow the steps in the [quick-start guide](#quick-start-guide), and refer to the [Reference Docs](/api).
 
-Setting up the sandbox and production keys will require you to generate a public and private key pair via OpenSSL. You will also need to use
+Setting up the sandbox and production keys requires you to generate a public and private key pair via OpenSSL. You also need to use
 signature and cryptographic nonce generation tools specific to your programming environment. If necessary, take time to familiarise yourself with these tools.  
 
 Further Assistance
@@ -86,7 +86,7 @@ You first generate an API key, and then upload a generated public key.
 
 The API key is an alphanumeric code that allows a user to be authenticated when accessing the API endpoints. The key is written to the HTTP headers of each request.
 
-A public key is needed to later generate a signature and the cryptographic nonce for each running request. The signature and cryptographic nonce provide extra security. 
+The API also needs a public key to generate a signature and the cryptographic nonce for each running request. The signature and cryptographic nonce provide extra security. 
 
 Both the sandbox API key and the public key can only be used in the sandbox environment only.   
 
@@ -130,7 +130,7 @@ private.pem is the private key and public.pem is the public key.
 Authenticate with the API
 -------------------------
 
-Once you have generated the sandbox keys, you need to use the API key to authenticate with the Partner API. You add the API key to your development environment. The key is written to HTTP headers for connecting securely to the different endpoints.
+From the generated sandbox keys, you use the API key to authenticate with the Partner API. You add the API key to your development environment. The key is written to HTTP headers for connecting securely to the different endpoints.
 
 The following is an example request header in cURL format. You add the API key value to X-API-KEY at the end of the request. In this example, it is Create Company.
 
@@ -141,7 +141,7 @@ curl -X GET "https://yourcompany.net/api/v1/p/company/1f4s2r1NG4E1gZmoeXQBJo9MAw
 Generate Signature and Nonce Value
 ----------------------------------
 
-Once you have been authenticated through the Partner API, you generate a signature and nonce value. While both the private and public keys are required, the private key is used specifically for signing in order to generate a signature. The following additional http headers are added to each request:
+Once you have been authenticated through the Partner API, you generate a signature and nonce value. Requiring both the private and public keys, the API uses the private key specifically for signing in order to generate a signature. Each request also includes these additional http headers:
 
 'x-sign:' the signature itself
 'x-nonce:' the nonce used in the signature
@@ -154,7 +154,7 @@ The signature is encoded in base64 url safe encoding (RFC 4648), and is applicab
 
 ### Defining a Nonce
 
-A nonce is a number that is added to a request. The number increments by one each time a request is made. A nonce is designed to decrease the likelihood of a replay attack as shown in this example. 
+A nonce is a number that is added to a request. The number increments by one each time a request is made. A nonce decreases the likelihood of a replay attack as shown in this example. 
 
 #### Example
 
@@ -192,6 +192,13 @@ The following is a summary of the methods used by each endpoint.
 ### Parameters
 
 GET method parameters are passed in the query string of the URL. All other request parameters are sent in the request body and use `application/json`.
+
+Rate Limiting
+-------------
+
+The Partner API includes rate limiting when users add funds. To ensure that the API can handle requests reliably, the API creates no more than 1 fund every 15 seconds.
+
+If this limit is exceeded, an HTTP 429 Too Many Requests response status code appears. The [Reference Docs](/api) provides more details on response codes.
 
 
 Quick-Start Guide
@@ -269,7 +276,7 @@ Using the `company_id` of ACME Corp, you add a user as a Trusted Party for that 
 
 The response returned from the request indicates that the message is successful.
 
-A Trusted Party that is a user must have been added to the Qredo Network through the Qredo Desktop app. When adding the Trusted Party using the below request, they receive an approval request on the Qredo Signing app. Once approved, you will be able to find the Trusted Party when running a Returns All Trusted Parties for a company request.
+A Trusted Party that is a user must have been added to the Qredo Network through the Qredo Desktop app. When adding the Trusted Party using the below request, they receive an approval request on the Qredo Signing app. Once approved, you can find the Trusted Party when running a Returns All Trusted Parties for a company request.
 
 You first enter **9827feec-4eae-4e80-bda3-daa7c3b97ad1** in the URL for John Doe Group and the following request:
 
@@ -357,7 +364,7 @@ The response shows an assigned `fund_id` and IDs assigned to each custody group.
 
 This example includes the `custodygroup_withdraw` group with a `threshold` of 1 that contains 1 `member`. There is the `custodygroup_tx` group that also has a `threshold` of 1 with 1 `member`. This example fund contains `BTC-TESTNET`. As members need to be Trusted Party users, you add the 'trusted_entity_id' as a value in the '"members"' array.
 
-The fund is added to the `company_id` of 1fB50nbY9Tw2TT12K6VH46gDKWE.
+The `company_id` of 1fB50nbY9Tw2TT12K6VH46gDKWE includes the added fund.
 
 You enter **1fB50nbY9Tw2TT12K6VH46gDKWE** for ACME Corp in the URL and the following request.
 
