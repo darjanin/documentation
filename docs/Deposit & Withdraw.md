@@ -30,9 +30,12 @@ View Deposit Addresses
 ----------------------
 
 The default fund and asset that you have set up includes a deposit address, which is the cryptocurrency wallet address that is linked to a Qredo fund. However, any
-fund that you create is linked to a deposit address. The address is securely created using the MPC protocol.
+fund that you create is linked to a deposit address. 
 
-You are notified when money arrives at your address via an email.
+The cryptocurrency wallet address is created securely using the MPC protocol. The address format is recognised on the underlying blockchain, but is also understood by the Qredo blockchain.
+When money is added to the wallet address, it stays on the underlying blockchain. However, it can now be managed within the Qredo blockchain, and be subject to its governance rules.
+
+You are notified when money arrives at your address via an email with the subject of **Deposit complete**.
 
 1. Click the asset or ledger icon.
 
@@ -72,14 +75,18 @@ In Ledger view, you can see deposit transactions to one or more funds that you a
 | REFERENCE | Reference number for the deposit transaction. |
 | SENDER | Name of the sender. |
 
-Create New Address
-------------------
+Create New Withdrawal Address
+-----------------------------
 
 If you do not have a withdrawal address, you need to create one before the transaction. A fund must contain a withdrawal address for a transaction to happen. Each asset within a fund can have a different withdrawal address. As the initiator of the withdrawal, you confirm your decision by authorising using the Qredo Signing App.
 
-1. Click the asset or ledger icon.
+In essence, the withdrawal address is a different block on the underlying cryptocurrency blockchain. In the same way as a deposit address, the Qredo blockchain recognises the format.
 
-![coins](/doc-images/coins.png)
+:::info
+Another fund can use the same withdrawal address.
+:::
+
+1. Click the ledger icon.
 
 ![Ledger](/doc-images/ledger.png)
 
@@ -148,8 +155,8 @@ You are also notified when a withdraw transaction is complete via an email.
 6.  Select the address that you want to send the money to in the **To** list.
 7.  Enter the amount that you want to withdraw in **Amount**. The Blockchain Miner's fee and total withdrawal cost appears.
 8.  Type in a reference number in **Reference**.
-9.  To select a date for when the withdrawal takes place, click **Expires In** and enter days, hours, and minutes in the displayed fields.
-10. To select a precise date for when the withdrawal takes place, click **Expires On** and enter a date and time in the displayed fields.
+9.  To select a date for when the withdrawal takes place, click **Expires In** and enter days, hours, and minutes in the displayed box.
+10. To select a precise date for when the withdrawal takes place, click **Expires On** and enter a date and time in the displayed calendar widgets.
 11. Click **Review Withdrawal**.
 
 ### Review Withdrawal
@@ -222,6 +229,8 @@ You can also view other details linked to the transaction under the Show Details
 4.  To reject, tap **Reject**.
 
 For the action you select, you sign in with your biometric features and 6-digit passcode, and tap confirm in the confirmation screens.
+
+When the withdrawal is complete, you are notified on the phone and web app. You also receive an email with the subject of **withdrawal complete**.
 
 Track Progress
 --------------
@@ -323,7 +332,7 @@ The following is an example actioned entry in the Approval view with the status 
 
 ### Transaction View (Ledger)
 
-1. Click the Ledger icon,
+1. Click the Ledger icon.
 
 ![Ledger](/doc-images/ledger.png)
 

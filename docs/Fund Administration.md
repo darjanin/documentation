@@ -58,11 +58,17 @@ If you have changed your default settings to include Bitcoin for Fund One and Bi
 The summary section has basic information on the fund:
 
 *   The Fund ID to help differentiate funds with similar names and descriptions.
-*   The type of asset in the fund as Bitcoin Testnet.
+*   The type of asset in the fund as Bitcoin 
 *   The name of the fund as "Fund One".
 *   A brief description about the fund.
 
 ![summary](/doc-images/4summaryinfo.png)
+
+:::info
+From the Summary section, a link also exists to the page of the asset.
+![assetlink](/doc-images/assetlink.png)
+
+:::
 
 ### Membership & Permissions
 

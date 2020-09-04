@@ -2,7 +2,7 @@
 id: Creating Transactions
 ---
 
-Transactions allow a trade initiator to transfer money to a recipient (or counterparty) within the same fund. All money during a transfer
+Transactions allow a trade initiator to transfer money to a recipient (or counterparty) within the same fund. Ownership of the money simply changes from the trade initiator to the receiving counterparty. All money during a transfer
 stays on the Qredo Network, and is secure on the Qredo blockchain. Liquidity is maintained, so that money can move between participants at any time.
 
 As a custodian, you can decide if a transfer started by a trade initiator should happen by approving or rejecting the transaction. If all custodians under the threshold of the transfer custody policy have approved, the transaction takes place and is recorded on the Qredo blockchain. You will only be able to sign the transaction if you are a custodian for the transfer policy linked to the fund. For more details on thresholds and custody policies, refer to [Fund Administration](/docs/Fund%20Administration).
@@ -30,28 +30,27 @@ You also set the date and time or number of days for custodian approval, accordi
 
 You are also notified when a transfer transaction is complete through an email.
 
-1.Start your action from the Asset view or Ledger view by clicking either:
-
-![coins](/doc-images/coins.png)
+1.Start your action from the Ledger view by clicking:
 
 ![ledger](/doc-images/ledger.png)
 
-2. Choose the **Transfer** option in the Select Type box.
+2. Click **New TX**.
+3. Choose the **Transfer** option in the Select Type box.
 
 ![transaction](/doc-images/selecttypetrans.png)
 
-3. Click **Continue**. The Transfer screen shows, and includes a scrollbar that lets you scroll down to other options.
+4. Click **Continue**. The Transfer screen shows, and includes a scrollbar that lets you scroll down to other options.
 
 ![transfer](/doc-images/transfermain.png)
 
-4. In the From section, select the fund for the transfer in the **Fund** list.
-5. Choose the asset that you want to transfer in the **Asset** list.
-6. Enter details of the user that you want to transfer the money to by typing their name, email address, or network alias in the **To** list.
-7. Enter the sum of money that you want to transfer in **Amount**. The Qredo fee and total transfer cost appears.  
-8. Type in a reference number in **Reference**.
-9. To select the exact time until the transfer takes place, click **Expires In** and enter days, hours, and minutes in the displayed fields.
-10. To select a precise date for when the transfer takes place, click **Expires On** and enter a date and time in the displayed fields.
-11. Click **Review Transfer**.
+5. In the From section, select the fund for the transfer in the **Fund** list.
+6. Choose the asset that you want to transfer in the **Asset** list.
+7. Enter details of the user that you want to transfer the money to by typing their name, email address, or network alias in the **To** list.
+8. Enter the sum of money that you want to transfer in **Amount**. The Qredo fee and total transfer cost appears.  
+9. Type in a reference number in **Reference**.
+10. To select the exact time until the transfer takes place, click **Expires In** and enter days, hours, and minutes in the displayed boxes.
+11. To select a precise date for when the transfer takes place, click **Expires On** and enter a date and time in the displayed calendar widgets.
+12. Click **Review Transfer**.
 
 ### Review Transfer
 
@@ -127,6 +126,8 @@ You can also view other details linked to the transaction under the Show Detail 
 4.  To reject, tap **Reject**.
 
 For the approve or reject action, you sign in with your biometric features and 6-digit PIN, and tap confirm in the confirmation screens.
+
+When the transfer is complete, you are notified on the phone and web app. You also receive an email with the subject of **Transfer complete**.
 
 Track Progress
 --------------
