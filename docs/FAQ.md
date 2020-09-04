@@ -103,17 +103,17 @@ that the set password does not have 10 characters.
 ![Incorrect Characters](/doc-images/incorrectcharacters.png)
 :::
 
-9. Type in your password again in **Confirm Password**.
+8. Type in your password again in **Confirm Password**.
 
-10. Click **Continue.** An alert is sent to your phone.
+9. Click **Continue.** An alert is sent to your phone.
 
-11. Tap on the notification and log in to the Qredo Signing app using the biometric features and 6-digit PIN.
+10. Tap on the notification and log in to the Qredo Signing app using the biometric features and 6-digit PIN.
 
-12. Tap **Authorise.**
+11. Tap **Authorise.**
 
-13. Sign in again on the phone app to authorise using the biometric feature and PIN.
+12. Sign in again on the phone app to authorise using the biometric feature and PIN.
 
-14. Tap **Confirm**.
+13. Tap **Confirm**.
 
 When the password change is confirmed, you receive an email in your inbox with the subject of **Qredo password successfully changed**. You are also informed of the update on your phone and the Qredo Wallet app.
 
@@ -250,10 +250,8 @@ The Identity ledger also shows password reset actions.
 |DEVICE ID  | Browser program and operating system of the request. For Windows, the supported browsers are Firefox, Edge and Chrome. For MacOS, the browsers are Firefox, Safari and Chrome. |
 |LOCATION | Location where a request to the server was made from, e.g., the city and country. |
 |ACTIONED  | The date and time in which a server responded to a request. |
-|ACTION TAKEN | The type of response action. 
-                * AUTHORIZED - The server authorised the request. 
-                * EXPIRED - The request had expired due to no activity during the time slot. 
-                * REJECTED - The server had rejected the request, e.g., because the credentials supplied for signing in were incorrect. | 
+|ACTION TAKEN | The type of response action. When AUTHORIZED, the server authorised the request. When EXPIRED, the request had expired due to no activity during the time slot. When REJECTED, the server had rejected the request, e.g., because the credentials supplied for signing in were incorrect.  | 
+
 
 
 
