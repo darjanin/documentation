@@ -14,7 +14,7 @@ import useSearchQuery from '@theme/hooks/useSearchQuery';
 
 import styles from './styles.module.css';
 
-const Search = ({handleSearchBarToggle, isSearchBarExpanded}) => {
+const Search = ({handleSearchBarToggle, isSearchBarExpanded, customId, isHomepage}) => {
   const [algoliaLoaded, setAlgoliaLoaded] = useState(false);
   const searchBarRef = useRef(null);
   const {siteConfig = {}} = useDocusaurusContext();
@@ -29,7 +29,7 @@ const Search = ({handleSearchBarToggle, isSearchBarExpanded}) => {
       appId: algolia.appId,
       apiKey: algolia.apiKey,
       indexName: algolia.indexName,
-      inputSelector: '#search_input_react',
+      inputSelector: `#${customId || 'search_input_react'}`,
       algoliaOptions: algolia.algoliaOptions,
       autocompleteOptions: {
         openOnFocus: true,
@@ -103,8 +103,30 @@ const Search = ({handleSearchBarToggle, isSearchBarExpanded}) => {
     }
   });
 
+  if (isHomepage) return (
+    <div key="search-box">
+      <div className={classnames({[styles.homepageSearchWrapper]: isHomepage})}>
+        <input
+          id={customId || "search_input_react"}
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          className={classnames('navbar__search-input', styles.searchInput, {
+            [styles.searchInputExpanded]: isSearchBarExpanded,
+            [styles.homepageSearchInput]: isHomepage,
+          })}
+          onMouseOver={handleSearchInput}
+          onFocus={handleSearchInput}
+          onBlur={handleSearchInputBlur}
+          onKeyDown={handleSearchInputPressEnter}
+          ref={searchBarRef}
+        />
+      </div>
+    </div>
+  )
+
   return (
-    <div className="navbar__search" key="search-box">
+    <div className={classnames("navbar__search", {[styles.navbarSearchExpanded]: isSearchBarExpanded})} key="search-box">
       <div className={styles.searchWrapper}>
         <span
           aria-label="expand searchbar"
@@ -118,7 +140,7 @@ const Search = ({handleSearchBarToggle, isSearchBarExpanded}) => {
         />
 
         <input
-          id="search_input_react"
+          id={customId || "search_input_react"}
           type="search"
           placeholder="Search"
           aria-label="Search"

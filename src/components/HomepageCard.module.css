@@ -1,0 +1,83 @@
+.feature {
+  border-radius: 8px;
+  box-shadow: 0 10px 20px -2px rgba(50, 50, 93, 0.15), 0 5px 12px -5px rgba(0, 0, 0, 0.07);
+  padding: 32px;
+  margin-bottom: 20px;
+  position: relative;
+  background-color: #fff;
+}
+
+.feature:hover {
+  box-shadow: 0 10px 20px -2px rgba(50, 50, 93, 0.35), 0 5px 12px -5px rgba(0, 0, 0, 0.07);
+}
+
+.titleLink {
+  position: static;
+}
+
+.titleLink:hover {
+  text-decoration: none;
+}
+
+.titleLink::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.title {
+  color: #191919;
+  font-size: 24px;
+  line-height: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* background: cyan; */
+}
+
+.listLink {
+  color: #6A6A6A;
+  font-weight: 500;
+  line-height: 19px;
+  font-size: 16px;
+  display: inline-block;
+  /* background: orange; */
+  padding: 5px 10px;
+  margin-top: -5px;
+  margin-bottom: 15px;
+  margin-left: -10px;
+  position: relative;
+}
+
+.listLinkLearnMore {
+  color: #C30097;
+  margin-top: 3px;
+  margin-bottom: calc(72px - 32px);
+}
+
+.featureImage {
+  height: 80px;
+  width: 80px;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+@media screen and (max-width: 980px) {
+  .feature {
+    margin: 0 14px 20px;
+    width: calc(100% - 24px);
+    padding: 24px;
+  }
+
+  .listLinkLearnMore {
+    margin-bottom: 0;
+  }
+}

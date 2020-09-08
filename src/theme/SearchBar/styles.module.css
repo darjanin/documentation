@@ -21,8 +21,8 @@
     display: block;
     position: absolute;
     right: 0;
-    width: 2.75rem;
-    height: 2rem;
+    width: 50px;
+    height: 50px;
     z-index: 1;
   }
 
@@ -36,30 +36,52 @@
 
   :global(.navbar__inner) {
     position: relative;
+    flex-wrap: nowrap;
   }
 
   :global(.navbar__search) {
     position: relative;
     flex: 1 1 auto;
     padding-left: 0;
+    margin-right: 8px;
   }
 
   .searchWrapper {
-    position: absolute;
-    top: calc(var(--ifm-navbar-padding-vertical) * 2 * -1);
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    top: 0;
+    position: relative;
   }
 
   .searchInput {
     background-position-x: 0.85rem;
     width: 0;
-    transition: width 0.3s ease-in-out;
+    height: 50px;
+    transition: width 0.3s ease-in-out, background-color 0.3s;
+    background-color: transparent;
+    --ifm-navbar-search-input-icon: url('/img/search-icon-white.svg');
   }
 
   .searchInputExpanded {
     width: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    --ifm-navbar-search-input-icon: url('/img/search-icon.svg');
+    background-position: center left 20px;
+    background-size: 24px 24px;
+    padding-left: 50px;
+    padding-right: 20px;
+  }
+
+  .navbarSearchExpanded {
+    position: fixed;
+    height: 50px;
+    left: var(--ifm-navbar-padding-horizontal);
+    right: var(--ifm-navbar-padding-horizontal);
+    /* pointer-events: none; */
   }
 }
 
@@ -67,4 +89,29 @@
   width: 100%;
   display: flex !important;
   justify-content: flex-end;
+}
+
+.homepageSearchWrapper {
+  width: 580px;
+  margin: 0 auto 140px;
+}
+
+@media (max-width: 768px) {
+  .homepageSearchWrapper {
+    display: none;
+  }
+}
+
+.homepageSearchInput {
+  --ifm-navbar-search-input-icon: url('/img/search-icon.svg');
+  position: relative;
+  vertical-align: top;
+  width: 100%;
+  height: 50px;
+  border: 1px solid #bdbdbd;
+  background-color: #fff;
+  background-position: center right 20px;
+  background-size: 24px 24px;
+  padding-left: 20px;
+  padding-right: 50px;
 }

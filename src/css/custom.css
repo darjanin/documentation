@@ -49,6 +49,9 @@
   --ifm-color-danger: #df001f;
 
   --ifm-font-family-base: "Barlow", sans-serif;
+  --ifm-navbar-height: 68px;
+  --ifm-navbar-padding-vertical: 14px;
+  --ifm-navbar-padding-horizontal: 24px;
 }
 
 .markdown {

@@ -1,0 +1,52 @@
+.banner {
+  margin: 80px auto 120px;
+  width: 980px;
+  height: 390px;
+  border-radius: 16px;
+  background-size: 100%;
+  padding: 76px 60px;
+  background-color: #101010;
+  background-image: url('/img/banner-background.jpg');
+  background-repeat: no-repeat;
+  border: 1px solid #E8E8E8;
+}
+
+@media screen and (max-width: 980px) {
+  .banner {
+    margin: 20px auto 52px;
+    width: calc(100vw - 48px);
+    height: calc(100vw - 48px);
+    max-height: 400px;
+    max-width: 400px;
+    background-size: contain;
+    background-position: right;
+    box-sizing: border-box;
+    padding: 40px 30px;
+    background-image: url('/img/banner-background-mobile.jpg');
+  }
+}
+
+.bannerTitle {
+  color: #fff;
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 500;
+}
+
+.bannerList {
+  margin: 0;
+  padding: 0;
+  color: #FF5AEC;
+  list-style: inside;
+}
+
+.bannerList li + li {
+  margin-top: 16px;
+}
+
+.bannerList a {
+  color: #fff;
+  text-decoration: underline;
+  font-size: 18px;
+  line-height: 22px;
+}
