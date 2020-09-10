@@ -82,10 +82,12 @@
   border-radius: 1.5px;
 }
 
-.markdown h1 {
+h1 {
   --ifm-h1-font-size: 54px;
   --ifm-heading-font-weight: 600;
   --ifm-heading-line-height: 60px;
+  font-size: var(--ifm-h1-font-size) !important;
+  line-height: var(--ifm-heading-line-height) !important;
   padding-top: 28px;
   padding-bottom: 30px;
 }
@@ -170,6 +172,10 @@
   border-top: 0;
 }
 
+.markdown table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
 .markdown table th {
   background-color: var(--ifm-table-head-background);
   color: var(--ifm-table-head-color);
@@ -192,7 +198,6 @@
   border: 0;
   padding: var(--ifm-table-cell-padding);
   min-height: 50px;
-  background-color: #fff;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;

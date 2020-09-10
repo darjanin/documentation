@@ -117,6 +117,7 @@
 .redoc-wrap h2 {
   font-size: 22px;
   line-height: 30px;
+  font-weight: 500;
 }
 
 .redoc-wrap h3 {
@@ -139,6 +140,10 @@
   font-family: Barlow, sans-serif;
   font-size: 16px;
   line-height: 24px;
+}
+
+.redoc-wrap a[download] {
+  border-color: #be1e94;
 }
 
 /* TABLE */
@@ -171,6 +176,18 @@
   padding-left: 16px;
   padding-right: 16px;
   background-image: none !important;
+}
+
+.redoc-wrap table tr th {
+  border-bottom: 0;
+  border-top: 0;
+  border-left: 0;
+  padding: 16px;
+  background-image: none !important;
+  font-weight: 400;
+  background-color: #191919;
+  color: #fff;
+  border-right-color: #fff;
 }
 
 .redoc-wrap table tr td:last-child {
